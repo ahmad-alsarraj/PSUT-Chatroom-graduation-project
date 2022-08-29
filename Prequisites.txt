@@ -1,0 +1,13 @@
+[Frontend]:
+Node
+Expo-Cli
+Docker
+net6.0
+
+
+[Backend]:
+1- [Python 3.10](https://www.python.org/downloads/) or any higher version
+
+2- [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)
+
+3- [Docker](https://docs.docker.com/desktop/windows/install/)

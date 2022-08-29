@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "895128349182",
+    "project_id": "PSUT_Chatroom-4a3c9",
+    "storage_bucket": "PSUT_Chatroom-4a3c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895128349182:android:a058437dd5226a671bf8af",
+        "android_client_info": {
+          "package_name": "com.PSUT_Chatroom.jo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895128349182-8ocrj3dqg59avqsg9kfjjpn2g3ufr6e9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.PSUT_Chatroom.jo",
+            "certificate_hash": "113ee4f2ab187d7b8dea0a530cc78a6cf8df7b0c"
+          }
+        },
+        {
+          "client_id": "895128349182-ffert36d8acelna9rjpb1q1q8p14rq99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXiMf7Y16H_GZKn5xdlWiob6ZjFcSyHHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895128349182-ffert36d8acelna9rjpb1q1q8p14rq99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

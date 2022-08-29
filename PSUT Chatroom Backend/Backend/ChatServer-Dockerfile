@@ -1,0 +1,31 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk as nuget
+COPY ./Server/Server.csproj /src/Server/
+COPY ./RegnewCommon/RegnewCommon.csproj /src/RegnewCommon/
+
+RUN dotnet restore "/src/Server/Server.csproj"
+RUN dotnet restore "/src/RegnewCommon/RegnewCommon.csproj"
+
+FROM nuget as publish
+
+COPY ./Server/ /src/Server/
+COPY ./RegnewCommon/ /src/RegnewCommon/
+RUN dotnet publish "/src/Server/Server.csproj" -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet as final
+ENV IS_DOCKER=TRUE
+ENV ASPNETCORE_ENVIRONMENT="Development"
+RUN apt-get update && \
+    apt-get install -y \
+    fontconfig && \
+    rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+
+ARG HostUserId
+ARG HostGroupId
+RUN addgroup --gid $HostGroupId nonroot
+RUN adduser --disabled-password --gecos '' --uid $HostUserId --gid $HostGroupId nonroot
+USER nonroot
+
+COPY --from=publish /app/publish/ .
+EXPOSE 1234
+ENTRYPOINT ["dotnet", "Server.dll"]

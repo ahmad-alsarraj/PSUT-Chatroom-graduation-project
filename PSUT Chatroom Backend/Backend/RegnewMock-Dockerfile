@@ -1,0 +1,18 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk AS nuget
+
+COPY ./RegnewMock /src/RegnewMock/
+COPY ./RegnewCommon /src/RegnewCommon/
+
+RUN dotnet restore "/src/RegnewMock/RegnewMock.csproj"
+RUN dotnet restore "/src/RegnewCommon/RegnewCommon.csproj"
+
+FROM nuget as publish
+
+COPY ./RegnewMock/ /src/RegnewMock/
+RUN dotnet publish "/src/RegnewMock/RegnewMock.csproj" -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+EXPOSE 1235
+ENTRYPOINT ["dotnet", "RegnewMock.dll"]

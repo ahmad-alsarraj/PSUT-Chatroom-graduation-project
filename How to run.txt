@@ -1,0 +1,21 @@
+how to run [Backend] alone:
+
+1- Make sure docker desktop is running
+
+2- Open your terminal inside [Backend]
+
+3- Run `python manager.py`
+
+4- You can navigate to Swagger UI on http://localhost:1234/Swagger
+
+
+
+how to run both [Frontend] and [Backend] and the whole project:
+
+1- Make sure docker desktop is running
+
+2- Open PSUT Chatroom Frontend Mobile then go to api then apiKey.js edit export const REACT_APP_GATEWAY_URL = "192.168.1.??"; instead of question marks put your actual ip address to communicate with port 1234 swagger.
+
+3- Go to swagger on port 1234 and then go to test click on recreate and seed DB to create the database before connecting.
+
+4- You can edit the paths to the location you downloaded the project for both frontend and backend in PSUT Chatroom start.bat and then run it. or you can do it manually by typing "docker-compose build" in the backend folder using cmd and then type "start docker-compose up" after that open another cmd in frontend folder and type "expo start" then follow the instructions of expo to connect.

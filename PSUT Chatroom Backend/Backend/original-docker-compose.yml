@@ -1,0 +1,42 @@
+services:
+    regnew:
+        build:
+            context: .
+            dockerfile: RegnewMock-Dockerfile
+        depends_on:
+            - db
+        ports:
+            - 1235:1235
+        networks:
+            - chat_network
+
+    api:
+        build:
+            context: .
+            dockerfile: ChatServer-Dockerfile
+            args:
+                HostUserId: '#HostUserId#'
+                HostGroupId: '#HostGroupId#'
+        depends_on:
+            - db
+            - regnew
+        ports:
+            - 1234:1234
+        networks:
+            - chat_network
+        volumes:
+            - '#BackendHostDataDirectory#:/app/data/'
+
+    db:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: "uni_chat_app"
+            POSTGRES_USER: "uni_chat_app"
+            POSTGRES_DB: "postgres"
+        expose:
+            - 5432
+        networks:
+            - chat_network
+
+networks:
+    chat_network: null
